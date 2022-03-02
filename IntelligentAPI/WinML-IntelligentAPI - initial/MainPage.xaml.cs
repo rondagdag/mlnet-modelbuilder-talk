@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Labs.Intelligent.ImageClassification;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -46,11 +45,9 @@ namespace WinML_IntelligentAPI
 
 
             //Call ClassifyImage to get image classes
-            List<ClassificationResult> list = await SqueezeNetImageClassifier.ClassifyImage(selectedStorageFile, 3);
 
             //Display Image and result
-            ResultsBlock.Text = "1st guess: " + list[0].category + "\nwith confidence: " + list[0].confidence + " \n\n\n2nd guess: " + list[1].category + "\nwith confidence: " + list[1].confidence + " \n\n\n3rd guess: " + list[2].category + "\nwith confidence: " + list[2].confidence;
-
+            ResultsBlock.Text = "Guesses here";
             await DisplayImage(selectedStorageFile);
 
         }

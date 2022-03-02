@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="WinML_IntelligentAPI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinML_IntelligentAPI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button Name="ButtonRun"
+                    ToolTipService.ToolTip="Pick and evaluate and image"
+                    Width="100"
+                    Height="40"
+                    Click="ButtonRun_Click" 
+                    IsEnabled="True" 
+                    VerticalAlignment="Bottom" RenderTransformOrigin="2.085,7.842" Margin="84,0,0,654">
+            <Button.Content>
+                Pick image
+            </Button.Content>
+        </Button>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+            <!--Image preview -->
+            <Grid>
+                <Image Name="UIPreviewImage" Stretch="Uniform"  VerticalAlignment="Center"  HorizontalAlignment="Center" MaxHeight="500" Width="500" />
+            </Grid>
+            <Grid CornerRadius="10">
+                <TextBlock x:Name="ResultsBlock" 
+                               MinHeight="100"
+                               FontWeight="Bold" 
+                               TextWrapping="WrapWholeWords"
+                               Padding="20"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
