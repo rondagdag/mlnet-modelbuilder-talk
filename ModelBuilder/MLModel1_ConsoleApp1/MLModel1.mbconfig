@@ -1,0 +1,63 @@
+﻿{
+  "TrainingTime": 2147482,
+  "Scenario": "ImageClassification",
+  "DataSource": {
+    "Type": "Folder",
+    "Version": 1,
+    "FolderPath": "D:\\presentations\\mlnet-modelbuilder-talk\\data\\flowers\\flower_photos"
+  },
+  "Environment": {
+    "Type": "Azure",
+    "Version": 1,
+    "SubscriptionID": "af840db5-1013-47fd-9f39-4cd096975e09",
+    "ResourceGroupName": "pytorchworkshop",
+    "WorkspaceName": "globai-ws",
+    "ComputeName": "test-compute",
+    "Location": "eastus",
+    "ExperimentName": "Imageclassification"
+  },
+  "RunHistory": {
+    "Version": 1,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "DNN + SE-ResNeXt-50",
+        "Score": 0.96,
+        "RuntimeInSeconds": 2136.5794846999997
+      }
+    ],
+    "Pipeline": {
+      "parameter": {
+        "0": {
+          "OutputColumnName": "input1",
+          "InputColumnName": "input1",
+          "ImageHeight": 224,
+          "ImageWidth": 224,
+          "CropAnchor": "Center",
+          "Resizing": "IsoCrop"
+        },
+        "1": {
+          "OutputColumnName": "input1",
+          "InputColumnName": "input1",
+          "ColorsToExtract": "Rgb",
+          "OrderOfExtraction": "ARGB",
+          "OutputAsFloatArray": true
+        },
+        "2": {
+          "ModelFile": "D:\\presentations\\mlnet-modelbuilder-talk\\ModelBuilder\\ModelBuilderSample\\MLModel1.onnx",
+          "FallbackToCpu": true
+        }
+      },
+      "estimators": [
+        "ResizeImages",
+        "ExtractPixels",
+        "ApplyOnnxModel"
+      ]
+    },
+    "MetricName": "accuracy"
+  },
+  "Type": "TrainingConfig",
+  "Version": 2
+}
