@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="ef8b4749-6232-4777-b4ab-00b5ac2dc1eb"
-    Publisher="CN=RonDagdag"
+    Name="4b99943e-12d8-4496-963f-cfad2511ecc1"
+    Publisher="CN=ron"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="ef8b4749-6232-4777-b4ab-00b5ac2dc1eb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="4b99943e-12d8-4496-963f-cfad2511ecc1" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>classifierMLNETModel</DisplayName>
-    <PublisherDisplayName>RonDagdag</PublisherDisplayName>
+    <DisplayName>App1</DisplayName>
+    <PublisherDisplayName>ron</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="classifierMLNETModel.App">
+      EntryPoint="App1.App">
       <uap:VisualElements
-        DisplayName="classifierMLNETModel"
+        DisplayName="App1"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="classifierMLNETModel"
+        Description="App1"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
