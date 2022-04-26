@@ -104,23 +104,25 @@ VTS,1,1,600,4.73,CSH,14.5
             var inputMeta = session.InputMetadata;
 
             var container = new List<NamedOnnxValue>();
-            container.Add(GetNamedOnnxValue<float>(inputMeta, "PassengerCount", 1f));
-            container.Add(GetNamedOnnxValue<float>(inputMeta, "TripTime", 1140f));
-            container.Add(GetNamedOnnxValue<float>(inputMeta, "TripDistance", 3.75f));
-            container.Add(GetNamedOnnxValue<float>(inputMeta, "FareAmount", 0f));
+            container.Add(GetNamedOnnxValue("PassengerCount", 1f));
+            container.Add(GetNamedOnnxValue("TripTime", 1140f));
+            container.Add(GetNamedOnnxValue("TripDistance", 3.75f));
+            container.Add(GetNamedOnnxValue("FareAmount", 0f));
             /* output onnx*/
 
-            var output = session.Run(container).First(x => x.Name == "Score0").AsTensor<float>().Max();
+            var output = session.Run(container).First(x => x.Name == "Score.output").AsTensor<float>().Max();
 
             Console.WriteLine($"**********************************************************************");
             Console.WriteLine($"Predicted fare: {output:0.####}, actual fare: 15.5");
             Console.WriteLine($"**********************************************************************");
         }
 
-        private static NamedOnnxValue GetNamedOnnxValue<T>(IReadOnlyDictionary<string, NodeMetadata> inputMeta, string column, T value)
+        private static NamedOnnxValue GetNamedOnnxValue<T>(string column, T value)
         {
             T[] inputDataInt = new T[] { value };
-            var tensor = new DenseTensor<T>(inputDataInt, inputMeta[column].Dimensions);
+            int[] dim = new int[] { 1, 1 };
+            var tensor = new DenseTensor<T>(inputDataInt, dim );//inputMeta[column].Dimensions);
+
             var namedOnnxValue = NamedOnnxValue.CreateFromTensor<T>(column, tensor);
             return namedOnnxValue;
         }

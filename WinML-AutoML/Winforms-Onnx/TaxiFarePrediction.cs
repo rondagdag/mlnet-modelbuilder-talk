@@ -20,10 +20,11 @@ namespace WinForms_WinML_ONNX
             InitializeComponent();
         }
 
-        private static NamedOnnxValue GetOnnxValue<T>(IReadOnlyDictionary<string, NodeMetadata> inputMeta, string column, T value)
+        private static NamedOnnxValue GetOnnxValue<T>(string column, T value)
         {
             T[] inputData = new T[] { value };
-            var tensor = new DenseTensor<T>(inputData, inputMeta[column].Dimensions);
+            int[] dim = new int[] { 1, 1 };
+            var tensor = new DenseTensor<T>(inputData, dim);
             var namedOnnxValue = NamedOnnxValue.CreateFromTensor<T>(column, tensor);
             return namedOnnxValue;
         }
@@ -33,15 +34,15 @@ namespace WinForms_WinML_ONNX
             var inputMeta = _session.InputMetadata;
             var container = new List<NamedOnnxValue>
             {
-                GetOnnxValue<float>(inputMeta, "PassengerCount", float.Parse(passengerCountTB.Text)),
-                GetOnnxValue<float>(inputMeta, "TripTime", float.Parse(tripDistanceTB.Text)),
-                GetOnnxValue<float>(inputMeta, "TripDistance", float.Parse(tripDistanceTB.Text)),
-                GetOnnxValue<float>(inputMeta, "FareAmount", 0f)
+                GetOnnxValue("PassengerCount", float.Parse(passengerCountTB.Text)),
+                GetOnnxValue("TripTime", float.Parse(tripDistanceTB.Text)),
+                GetOnnxValue("TripDistance", float.Parse(tripDistanceTB.Text)),
+                GetOnnxValue("FareAmount", 0f)
             };
 
             var result = _session.Run(container);
 
-            var output = result.First(x => x.Name == "Score0").AsTensor<float>().ToArray();
+            var output = result.First(x => x.Name == "Score.output").AsTensor<float>().ToArray();
             var scores = result.Select(x => x.AsTensor<float>()).ToArray();
             var pred = output.Max();
             ShowResult(pred, output, 0);
