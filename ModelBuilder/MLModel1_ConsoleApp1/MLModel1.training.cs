@@ -29,7 +29,7 @@ namespace MLModel1_ConsoleApp1
             // Data process configuration with pipeline data transformations
             var pipeline = mlContext.Transforms.ResizeImages(outputColumnName:@"input1",inputColumnName:@"input1",imageHeight:224,imageWidth:224,cropAnchor:ImageResizingEstimator.Anchor.Center,resizing:ImageResizingEstimator.ResizingKind.IsoCrop)      
                                     .Append(mlContext.Transforms.ExtractPixels(outputColumnName:@"input1",inputColumnName:@"input1",colorsToExtract:ImagePixelExtractingEstimator.ColorBits.Rgb,orderOfExtraction:ImagePixelExtractingEstimator.ColorsOrder.ARGB,outputAsFloatArray:true))      
-                                    .Append(mlContext.Transforms.ApplyOnnxModel(modelFile:@"D:\presentations\mlnet-modelbuilder-talk\ModelBuilder\ModelBuilderSample\MLModel1.onnx",fallbackToCpu:true));
+                                    .Append(mlContext.Transforms.ApplyOnnxModel(modelFile:@"D:\presentations\mlnet-modelbuilder-talk\ModelBuilder\MLModel1_ConsoleApp1\MLModel1.onnx",fallbackToCpu:true));
 
             return pipeline;
         }

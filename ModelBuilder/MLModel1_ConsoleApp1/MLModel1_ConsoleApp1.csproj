@@ -15,18 +15,18 @@
     <None Include="MLModel1.consumption.cs">
       <DependentUpon>MLModel1.mbconfig</DependentUpon>
     </None>
-    <None Include="MLModel1.training.cs">
-      <DependentUpon>MLModel1.mbconfig</DependentUpon>
-    </None>
-    <None Include="MLModel1.zip">
-      <DependentUpon>MLModel1.mbconfig</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="MLModel1.map.json">
       <DependentUpon>MLModel1.mbconfig</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MLModel1.onnx">
+      <DependentUpon>MLModel1.mbconfig</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MLModel1.training.cs">
+      <DependentUpon>MLModel1.mbconfig</DependentUpon>
+    </None>
+    <None Include="MLModel1.zip">
       <DependentUpon>MLModel1.mbconfig</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -24,8 +24,8 @@
         "Version": 0,
         "Type": "Trial",
         "TrainerName": "DNN + SE-ResNeXt-50",
-        "Score": 0.96,
-        "RuntimeInSeconds": 2136.5794846999997
+        "Score": 0.97,
+        "RuntimeInSeconds": 1846.9384416999999
       }
     ],
     "Pipeline": {
@@ -46,7 +46,7 @@
           "OutputAsFloatArray": true
         },
         "2": {
-          "ModelFile": "D:\\presentations\\mlnet-modelbuilder-talk\\ModelBuilder\\ModelBuilderSample\\MLModel1.onnx",
+          "ModelFile": "D:\\presentations\\mlnet-modelbuilder-talk\\ModelBuilder\\MLModel1_ConsoleApp1\\MLModel1.onnx",
           "FallbackToCpu": true
         }
       },
