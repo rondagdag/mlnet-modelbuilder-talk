@@ -36,8 +36,10 @@ namespace App1
         private LearningModelBinding binding;
         public static async Task<taxiFarePredModel> CreateFromStreamAsync(IRandomAccessStreamReference stream)
         {
-            taxiFarePredModel learningModel = new taxiFarePredModel();
-            learningModel.model = await LearningModel.LoadFromStreamAsync(stream);
+            taxiFarePredModel learningModel = new taxiFarePredModel
+            {
+                model = await LearningModel.LoadFromStreamAsync(stream)
+            };
             learningModel.session = new LearningModelSession(learningModel.model);
             learningModel.binding = new LearningModelBinding(learningModel.session);
             return learningModel;
@@ -49,13 +51,15 @@ namespace App1
             binding.Bind("TripDistance", input.TripDistance);
             binding.Bind("FareAmount", input.FareAmount);
             var result = await session.EvaluateAsync(binding, "0");
-            var output = new taxiFarePredOutput();
-            output.PassengerCount0 = result.Outputs["PassengerCount0"] as TensorFloat;
-            output.TripTime0 = result.Outputs["TripTime0"] as TensorFloat;
-            output.TripDistance0 = result.Outputs["TripDistance0"] as TensorFloat;
-            output.FareAmount0 = result.Outputs["FareAmount0"] as TensorFloat;
-            output.Features0 = result.Outputs["Features0"] as TensorFloat;
-            output.Score0 = result.Outputs["Score0"] as TensorFloat;
+            var output = new taxiFarePredOutput
+            {
+                PassengerCount0 = result.Outputs["PassengerCount0"] as TensorFloat,
+                TripTime0 = result.Outputs["TripTime0"] as TensorFloat,
+                TripDistance0 = result.Outputs["TripDistance0"] as TensorFloat,
+                FareAmount0 = result.Outputs["FareAmount0"] as TensorFloat,
+                Features0 = result.Outputs["Features0"] as TensorFloat,
+                Score0 = result.Outputs["Score0"] as TensorFloat
+            };
             return output;
         }
     }
