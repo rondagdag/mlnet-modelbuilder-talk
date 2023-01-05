@@ -9,11 +9,7 @@
   "Environment": {
     "Type": "Azure",
     "Version": 1,
-    "SubscriptionID": "af840db5-1013-47fd-9f39-4cd096975e09",
-    "ResourceGroupName": "pytorchworkshop",
-    "WorkspaceName": "globai-ws",
-    "ComputeName": "test-compute",
-    "Location": "eastus",
+    "SubscriptionID": "00000000-0000-0000-0000-000000000000",
     "ExperimentName": "Imageclassification"
   },
   "RunHistory": {

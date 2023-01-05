@@ -34,13 +34,11 @@ namespace App1
             var shape = new long[] { 1, 1 };
             var modelInput = new taxiFarePredInput()
             {
-                PassengerCount = TensorFloat.CreateFromArray(shape, new float[] { 1f }),
+                PassengerCount = TensorFloat.CreateFromArray(shape, new float[] { 2f }),
                 TripTime = TensorFloat.CreateFromArray(shape, new float[] { 1140f }),
-                TripDistance = TensorFloat.CreateFromArray(shape, new float[] { 3.75f }),
+                TripDistance = TensorFloat.CreateFromArray(shape, new float[] { 5.75f }),
                 FareAmount = TensorFloat.CreateFromArray(shape, new float[] { 0f }),
             };
-
-
             var modelFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/taxiFarePred.onnx"));
             var session = await taxiFarePredModel.CreateFromStreamAsync(modelFile);
 
@@ -48,6 +46,7 @@ namespace App1
             var score = modelOutput.Score0.GetAsVectorView();
 
             btn1.Content = score[0];
+
         }
     }
 }
