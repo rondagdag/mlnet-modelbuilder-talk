@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Labs.Intelligent.ImageClassification;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,6 +19,11 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
+
+using CommunityToolkit.Labs.Intelligent.ImageClassification;
+
+
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace WinML_IntelligentAPI
@@ -37,11 +41,13 @@ namespace WinML_IntelligentAPI
         private async void ButtonRun_Click(object sender, RoutedEventArgs e)
         {
             //Instantiate file picker and store selected file
-            FileOpenPicker fileOpenPicker = new FileOpenPicker();
-            fileOpenPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            FileOpenPicker fileOpenPicker = new FileOpenPicker
+            {
+                SuggestedStartLocation = PickerLocationId.PicturesLibrary,
+                ViewMode = PickerViewMode.Thumbnail
+            };
             fileOpenPicker.FileTypeFilter.Add(".jpg");
             fileOpenPicker.FileTypeFilter.Add(".png");
-            fileOpenPicker.ViewMode = PickerViewMode.Thumbnail;
             StorageFile selectedStorageFile = await fileOpenPicker.PickSingleFileAsync();
 
 

@@ -10,18 +10,12 @@
     <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="1.7.0" />
     <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.9.0" />
     <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="1.7.0" />
+    <PackageReference Include="Microsoft.ML.Vision" Version="1.7.0" />
+    <PackageReference Include="SciSharp.TensorFlow.Redist" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup Label="MLModel1">
     <None Include="MLModel1.consumption.cs">
       <DependentUpon>MLModel1.mbconfig</DependentUpon>
-    </None>
-    <None Include="MLModel1.map.json">
-      <DependentUpon>MLModel1.mbconfig</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="MLModel1.onnx">
-      <DependentUpon>MLModel1.mbconfig</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MLModel1.training.cs">
       <DependentUpon>MLModel1.mbconfig</DependentUpon>

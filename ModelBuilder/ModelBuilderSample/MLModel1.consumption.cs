@@ -19,8 +19,7 @@ namespace ModelBuilderSample
             public string Label { get; set; }
 
             [ColumnName(@"ImageSource")]
-            [Microsoft.ML.Transforms.Image.ImageType(224, 224)]
-            public System.Drawing.Bitmap ImageSource { get; set; }
+            public byte[] ImageSource { get; set; }
 
         }
 
@@ -32,32 +31,19 @@ namespace ModelBuilderSample
         #region model output class
         public class ModelOutput
         {
-            [ColumnName("output1")]
-            public float[] Output1 { get; set; }
+            [ColumnName(@"Label")]
+            public uint Label { get; set; }
 
-            public string[] ClassificationLabels = new string[] { "daisy", "dandelion", "roses", "sunflowers", "tulips", };
+            [ColumnName(@"ImageSource")]
+            public byte[] ImageSource { get; set; }
 
-            public string Prediction
-            {
-                get
-                {
-                    var maxScore = this.Score.Max();
-                    var maxIndex = Array.IndexOf(this.Score, maxScore);
-                    return this.ClassificationLabels[maxIndex];
-                }
-            }
+            [ColumnName(@"PredictedLabel")]
+            public string PredictedLabel { get; set; }
 
-            public float[] Score
-            {
-                get
-                {
-                    var exp = this.Output1.Select(x => (float)Math.Exp(x));
-                    var exp_sum = exp.Sum();
-                    return exp.Select(x => x / exp_sum).ToArray();
-                }
-            }
+            [ColumnName(@"Score")]
+            public float[] Score { get; set; }
+
         }
-
 
         #endregion
 

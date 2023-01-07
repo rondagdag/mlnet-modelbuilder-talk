@@ -8,7 +8,22 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <RelativePanel>
+        <StackPanel x:Name="Input" Margin="20">
+            <TextBox x:Name="PassengerCount" Header= "Passenger Count" Margin="0,24,0,0" HorizontalAlignment="Left" Text="1"/>
+
+            <TextBox x:Name="TripTime" Header= "Trip Time" Margin="0,24,0,0" HorizontalAlignment="Left" Text="600"/>
+
+            <TextBox x:Name="TripDistance" Header= "Trip Distance" Margin="0,24,0,0" HorizontalAlignment="Left" Text="5"/>
+
+        </StackPanel>
+        <StackPanel x:Name="Save" Orientation="Horizontal" RelativePanel.Below="Input">
+            <Button Content="Predict" Margin="24"  Click="Button_Click"/>
+            <TextBox x:Name="PredictedFare" Header= "Predicted Fare" Margin="0,24,0,0" HorizontalAlignment="Left" />
+        </StackPanel>
+    </RelativePanel>
+    <!--<Grid>
         <Button x:Name="btn1" Click="Button_Click" HorizontalAlignment="Center">Click Me!</Button>
-    </Grid>
+        
+    </Grid>-->
 </Page>

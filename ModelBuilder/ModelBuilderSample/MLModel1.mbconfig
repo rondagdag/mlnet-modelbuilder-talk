@@ -7,14 +7,8 @@
     "FolderPath": "D:\\presentations\\mlnet-modelbuilder-talk\\data\\flowers\\flower_photos"
   },
   "Environment": {
-    "Type": "Azure",
-    "Version": 1,
-    "SubscriptionID": "af840db5-1013-47fd-9f39-4cd096975e09",
-    "ResourceGroupName": "pytorchworkshop",
-    "WorkspaceName": "globai-ws",
-    "ComputeName": "test-compute",
-    "Location": "eastus",
-    "ExperimentName": "Imageclassification"
+    "Type": "LocalGPU",
+    "Version": 1
   },
   "RunHistory": {
     "Version": 1,
@@ -23,40 +17,34 @@
       {
         "Version": 0,
         "Type": "Trial",
-        "TrainerName": "DNN + SE-ResNeXt-50",
-        "Score": 0.96,
-        "RuntimeInSeconds": 2136.5794846999997
+        "TrainerName": "DNN + ResNet50",
+        "Score": 0.89947089947089942,
+        "RuntimeInSeconds": 167.93099975585938
       }
     ],
     "Pipeline": {
       "parameter": {
         "0": {
-          "OutputColumnName": "input1",
-          "InputColumnName": "input1",
-          "ImageHeight": 224,
-          "ImageWidth": 224,
-          "CropAnchor": "Center",
-          "Resizing": "IsoCrop"
+          "OutputColumnName": "Label",
+          "InputColumnName": "Label"
         },
         "1": {
-          "OutputColumnName": "input1",
-          "InputColumnName": "input1",
-          "ColorsToExtract": "Rgb",
-          "OrderOfExtraction": "ARGB",
-          "OutputAsFloatArray": true
+          "LabelColumnName": "Label",
+          "ScoreColumnName": "Score",
+          "FeatureColumnName": "ImageSource"
         },
         "2": {
-          "ModelFile": "D:\\presentations\\mlnet-modelbuilder-talk\\ModelBuilder\\ModelBuilderSample\\MLModel1.onnx",
-          "FallbackToCpu": true
+          "OutputColumnName": "PredictedLabel",
+          "InputColumnName": "PredictedLabel"
         }
       },
       "estimators": [
-        "ResizeImages",
-        "ExtractPixels",
-        "ApplyOnnxModel"
+        "MapValueToKey",
+        "ImageClassificationMulti",
+        "MapKeyToValue"
       ]
     },
-    "MetricName": "accuracy"
+    "MetricName": "MicroAccuracy"
   },
   "Type": "TrainingConfig",
   "Version": 2
