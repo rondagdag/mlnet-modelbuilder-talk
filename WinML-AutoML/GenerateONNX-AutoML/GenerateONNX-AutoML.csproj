@@ -6,16 +6,12 @@
     <RootNamespace>GenerateONNX_AutoML</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Data\taxi-fare-test.csv" />
-    <None Remove="Data\taxi-fare-train.csv" />
-  </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Data\taxi-fare-test.csv">
+    <Content Include="Dataset\taxi-fare-test.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\taxi-fare-train.csv">
+    <Content Include="Dataset\taxi-fare-train.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
