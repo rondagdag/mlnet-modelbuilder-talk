@@ -10,9 +10,9 @@ using MLModel1_WebApi1;
 
 // Configure app
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddPredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput>()
     .FromFile("MLModel1.zip");
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
@@ -34,8 +34,11 @@ app.MapPost("/predict",
     {
         var input = new MLModel1.ModelInput()
         {
-            ImageSource = (Bitmap)Image.FromFile(imagePath),
+            ImageSource = File.ReadAllBytes(imagePath),
         };
 
         return await Task.FromResult(predictionEnginePool.Predict(input));
     });
+
+// Run app
+app.Run();

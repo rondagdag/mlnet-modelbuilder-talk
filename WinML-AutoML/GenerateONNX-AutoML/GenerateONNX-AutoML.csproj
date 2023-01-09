@@ -24,8 +24,5 @@
     <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="1.7.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\App1\App1.csproj" />
-  </ItemGroup>
 
 </Project>

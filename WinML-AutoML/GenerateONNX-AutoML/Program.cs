@@ -28,7 +28,7 @@ namespace GenerateONNX_AutoML
             Console.ReadLine();
         }
 
-        private static string BaseDatasetsRelativePath = @"Data";
+        private static string BaseDatasetsRelativePath = @"Dataset";
         private static string TrainDataRelativePath = $"{BaseDatasetsRelativePath}/taxi-fare-train.csv";
         private static string TestDataRelativePath = $"{BaseDatasetsRelativePath}/taxi-fare-test.csv";
         private static string TrainDataPath = GetAbsolutePath(TrainDataRelativePath);
