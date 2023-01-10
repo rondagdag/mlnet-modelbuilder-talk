@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateONNX-AutoML", "GenerateONNX-AutoML\GenerateONNX-AutoML.csproj", "{FA12CFB2-B946-4582-A934-0582F3983DF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App1", "App1\App1.csproj", "{5DBA756A-7326-41FA-8353-0128ADD08632}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWP-Onnx", "UWP-Onnx\UWP-Onnx.csproj", "{5DBA756A-7326-41FA-8353-0128ADD08632}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winforms-Onnx", "Winforms-Onnx\Winforms-Onnx.csproj", "{05185B54-E5EA-4CDF-98FF-5A8C02E70960}"
 EndProject
