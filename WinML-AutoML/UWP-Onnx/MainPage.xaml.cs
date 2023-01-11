@@ -43,7 +43,7 @@ namespace App1
             var session = await taxiFarePredModel.CreateFromStreamAsync(modelFile);
 
             var modelOutput = await session.EvaluateAsync(modelInput);
-            var score = modelOutput.Score0.GetAsVectorView();
+            var score = modelOutput.Score0output.GetAsVectorView();
 
             PredictedFare.Text= score[0].ToString();
 

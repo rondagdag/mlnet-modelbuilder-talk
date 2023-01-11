@@ -13,20 +13,21 @@ namespace App1
     
     public sealed class taxiFarePredInput
     {
-        public TensorFloat PassengerCount; // shape(1,1)
-        public TensorFloat TripTime; // shape(1,1)
-        public TensorFloat TripDistance; // shape(1,1)
-        public TensorFloat FareAmount; // shape(1,1)
+        public TensorFloat PassengerCount; // shape(-1,1)
+        public TensorFloat TripTime; // shape(-1,1)
+        public TensorFloat TripDistance; // shape(-1,1)
+        public TensorFloat FareAmount; // shape(-1,1)
     }
     
     public sealed class taxiFarePredOutput
     {
-        public TensorFloat PassengerCount0; // shape(1,1)
-        public TensorFloat TripTime0; // shape(1,1)
-        public TensorFloat TripDistance0; // shape(1,1)
-        public TensorFloat FareAmount0; // shape(1,1)
-        public TensorFloat Features0; // shape(1,3)
-        public TensorFloat Score0; // shape(1,1)
+        public TensorFloat PassengerCount0output; // shape(-1,1)
+        public TensorFloat TripTime0output; // shape(-1,1)
+        public TensorFloat TripDistance0output; // shape(-1,1)
+        public TensorFloat FareAmount0output; // shape(-1,1)
+        public TensorFloat Features0output; // shape(-1,3)
+        public TensorInt64Bit mlnet0Features0unusedOutput; // shape(-1,1)
+        public TensorFloat Score0output; // shape(-1,1)
     }
     
     public sealed class taxiFarePredModel
@@ -36,10 +37,8 @@ namespace App1
         private LearningModelBinding binding;
         public static async Task<taxiFarePredModel> CreateFromStreamAsync(IRandomAccessStreamReference stream)
         {
-            taxiFarePredModel learningModel = new taxiFarePredModel
-            {
-                model = await LearningModel.LoadFromStreamAsync(stream)
-            };
+            taxiFarePredModel learningModel = new taxiFarePredModel();
+            learningModel.model = await LearningModel.LoadFromStreamAsync(stream);
             learningModel.session = new LearningModelSession(learningModel.model);
             learningModel.binding = new LearningModelBinding(learningModel.session);
             return learningModel;
@@ -51,15 +50,14 @@ namespace App1
             binding.Bind("TripDistance", input.TripDistance);
             binding.Bind("FareAmount", input.FareAmount);
             var result = await session.EvaluateAsync(binding, "0");
-            var output = new taxiFarePredOutput
-            {
-                PassengerCount0 = result.Outputs["PassengerCount0"] as TensorFloat,
-                TripTime0 = result.Outputs["TripTime0"] as TensorFloat,
-                TripDistance0 = result.Outputs["TripDistance0"] as TensorFloat,
-                FareAmount0 = result.Outputs["FareAmount0"] as TensorFloat,
-                Features0 = result.Outputs["Features0"] as TensorFloat,
-                Score0 = result.Outputs["Score0"] as TensorFloat
-            };
+            var output = new taxiFarePredOutput();
+            output.PassengerCount0output = result.Outputs["PassengerCount.output"] as TensorFloat;
+            output.TripTime0output = result.Outputs["TripTime.output"] as TensorFloat;
+            output.TripDistance0output = result.Outputs["TripDistance.output"] as TensorFloat;
+            output.FareAmount0output = result.Outputs["FareAmount.output"] as TensorFloat;
+            output.Features0output = result.Outputs["Features.output"] as TensorFloat;
+            output.mlnet0Features0unusedOutput = result.Outputs["mlnet.Features.unusedOutput"] as TensorInt64Bit;
+            output.Score0output = result.Outputs["Score.output"] as TensorFloat;
             return output;
         }
     }
